@@ -1,7 +1,9 @@
 // TODO - fix the onlyContries props. Currently expects that as an array of country object, but users should be able to send in array of country isos
 
-import { some, findWhere, reduce, map, filter, any, includes } from 'lodash/collection';
-import { findIndex, first, rest } from 'lodash/array';
+import { some, reduce, map, filter, includes } from 'lodash/collection';
+import findWhere from 'lodash.findwhere';
+import { findIndex, tail } from 'lodash/array';
+import first from 'lodash.first';
 import { debounce, memoize } from 'lodash/function';
 import { trim, startsWith } from 'lodash/string';
 import React from 'react';
@@ -72,10 +74,10 @@ class ReactPhoneInput extends React.Component {
     let selectedCountryGuessIndex = findIndex(allCountries, selectedCountryGuess);
     let formattedNumber = this.formatNumber(inputNumber.replace(/\D/g, ''), selectedCountryGuess ? selectedCountryGuess.format : null);
     let preferredCountries = filter(allCountries, function(country) {
-      return any(this.props.preferredCountries, function(preferredCountry) {
+      return some(this.props.preferredCountries, function(preferredCountry) {
         return preferredCountry === country.iso2;
       });
-    }, this);
+    }.bind(this), this);
 
     this.getNumber = this.getNumber.bind(this);
     this.getValue = this.getValue.bind(this);
@@ -187,7 +189,7 @@ class ReactPhoneInput extends React.Component {
 
       return {
         formattedText: acc.formattedText + first(acc.remainingText),
-        remainingText: rest(acc.remainingText)
+        remainingText: tail(acc.remainingText)
       };
     }, {formattedText: '', remainingText: text.split('')});
     return formattedObject.formattedText + formattedObject.remainingText.join('');
@@ -419,7 +421,7 @@ class ReactPhoneInput extends React.Component {
           <span className='dial-code'>{'+' + country.dialCode}</span>
         </li>
       );
-    }, this);
+    }.bind(this), this);
 
     const dashedLi = (<li key={'dashes'} className='divider' />);
     // let's insert a dashed line in between preffered countries and the rest
