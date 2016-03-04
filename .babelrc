@@ -3,14 +3,6 @@
   "loose": ["es6.modules", "es6.classes"],
   "optional": ["runtime", "es7.decorators"],
   "plugins": [
-    "babel-plugin-module-alias"
-  ],
-  "extra": {
-    "module-alias": [
-      {
-        "src": "./src",
-        "expose": "phone-input"
-      }
-    ]
-  }
+    "espower"
+  ]
 }

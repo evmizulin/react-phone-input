@@ -3,7 +3,13 @@ import { propTypes } from 'tcomb-react'
 import { Str, Func, struct, list } from 'tcomb'
 import APhoneInput from './PhoneInput'
 
+import './phone-input.styl'
+
 export default class PhoneInput extends Component {
+
+    static defaultProps = {
+        className: 'phone-input-container'
+    }
 
     static propTypes = propTypes({
         className: Str,

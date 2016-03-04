@@ -1,38 +1,39 @@
 {
-  "name": "react-phone-input",
+  "name": "react-phone-input-plus",
   "version": "1.0.0",
-  "description": "A react component to format phone numbers",
+  "description": "",
+  "main": "./index.js",
   "config": {
     "modules": "phone-input"
   },
   "scripts": {
-    "clean": "rm -rf $npm_package_config_modules",
-    "build": "npm run clean && babel src --quiet --copy-files --source-maps --out-dir ."
+    "dev": "webpack-dev-server",
+    "bundle": "webpack"
   },
-
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/evmizulin/react-phone-input-plus.git"
-  },
-  "keywords": [
-    "react",
-    "phone",
-    "format",
-    "telephone"
-  ],
-  "license": "MIT",
-  "homepage": "https://github.com/evmizulin/react-phone-input-plus",
-  "devDependencies": {
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
     "babel-runtime": "^5.x.x",
     "classnames": "^2.2.3",
-    "react": "^0.14.6",
-    "react-dom": "^0.14.6",
+    "clone": "^1.0.2",
+    "lodash": "^4.6.1",
+    "lodash.findwhere": "^3.1.0",
+    "lodash.first": "^3.0.0",
+    "react": "^0.14.3",
+    "react-dom": "^0.14.3",
     "react-overlays": "^0.6.0",
-    "tcomb": "^2.6.0",
-    "tcomb-react": "^0.8.12"
+    "tcomb": "^2.7.0",
+    "tcomb-react": "^0.8.13"
   },
-  "dependencies": {
-    "babel": "^5.x.x",
-    "babel-plugin-module-alias": "^0.x.x"
+  "devDependencies": {
+    "babel-core": "^5.x.x",
+    "babel-loader": "^5.x.x",
+    "babel-plugin-espower": "^1.0.0",
+    "css-loader": "^0.23.1",
+    "file-loader": "^0.8.5",
+    "style-loader": "^0.13.0",
+    "stylus-loader": "^1.5.1",
+    "webpack": "^1.12.9",
+    "webpack-dev-server": "^1.14.0"
   }
 }

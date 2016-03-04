@@ -496,7 +496,7 @@ class ReactPhoneInput extends React.Component {
         const inputFlagClasses = `flag ${this.state.selectedCountry.iso2}`
 
         return (
-            <div className="qw-phone-input">
+            <div>
                 <input
                     onChange={this.handleInput}
                     onClick={this.handleInputClick}
