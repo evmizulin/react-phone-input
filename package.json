@@ -8,7 +8,9 @@
   },
   "scripts": {
     "dev": "webpack-dev-server",
-    "bundle": "webpack"
+    "bundle": "webpack",
+    "clean": "rm -rf $npm_package_config_modules",
+    "build": "npm run clean && babel src/phone-input --quiet --copy-files --source-maps --out-dir ./phone-input"
   },
   "author": "",
   "license": "ISC",
@@ -26,6 +28,7 @@
     "tcomb-react": "^0.8.13"
   },
   "devDependencies": {
+    "babel": "^5.x.x",
     "babel-core": "^5.x.x",
     "babel-loader": "^5.x.x",
     "babel-plugin-espower": "^1.0.0",

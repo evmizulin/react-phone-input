@@ -13,12 +13,5 @@ module.exports = {
             {test: /\.styl/, exclude: /node_modules/, loader: "style-loader!css-loader!stylus-loader"},
             {test: /\.js$/, exclude: /node_modules/, loader: "babel"}
         ]
-    },
-    resolve: {
-        root: path.resolve(__dirname),
-        alias: {
-            'di-starter': 'src'
-        },
-        extensions: ['', '.js']
     }
 };
