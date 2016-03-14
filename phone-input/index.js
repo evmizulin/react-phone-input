@@ -56,25 +56,23 @@ var PhoneInput = (function (_Component) {
         return _react2['default'].createElement(
             'div',
             { className: className },
-            _react2['default'].createElement(_PhoneInput2['default'], {
-                defaultCountry: defaultCountry,
-                value: value,
-                countries: this.getCountriesList(),
-                onChange: this.onChange.bind(this)
-            })
+            _react2['default'].createElement(
+                'div',
+                { className: 'phone-input-container' },
+                _react2['default'].createElement(_PhoneInput2['default'], {
+                    defaultCountry: defaultCountry,
+                    value: value,
+                    countries: this.getCountriesList(),
+                    onChange: this.onChange.bind(this)
+                })
+            )
         );
     };
 
     _createClass(PhoneInput, null, [{
-        key: 'defaultProps',
-        value: {
-            className: 'phone-input-container'
-        },
-        enumerable: true
-    }, {
         key: 'propTypes',
         value: _tcombReact.propTypes({
-            className: _tcomb.Str,
+            className: _tcomb.maybe(_tcomb.Str),
             value: _tcomb.Str,
             countries: _tcomb.list(_tcomb.struct({
                 country: _tcomb.Str,
