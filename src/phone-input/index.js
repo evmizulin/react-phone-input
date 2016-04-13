@@ -37,7 +37,7 @@ export default class PhoneInput extends Component {
     }
 
     render() {
-        const { value, defaultCountry, className } = this.props
+        const { value, defaultCountry, className, maxPhoneLength } = this.props
         return (
             <div className={className}>
                 <div className="phone-input-container">
@@ -46,6 +46,7 @@ export default class PhoneInput extends Component {
                       value={value}
                       countries={this.getCountriesList()}
                       onChange={::this.onChange}
+                      maxPhoneLength={maxPhoneLength}
                     />
                 </div>
             </div>

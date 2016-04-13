@@ -52,6 +52,7 @@ var PhoneInput = (function (_Component) {
         var value = _props.value;
         var defaultCountry = _props.defaultCountry;
         var className = _props.className;
+        var maxPhoneLength = _props.maxPhoneLength;
 
         return _react2['default'].createElement(
             'div',
@@ -63,7 +64,8 @@ var PhoneInput = (function (_Component) {
                     defaultCountry: defaultCountry,
                     value: value,
                     countries: this.getCountriesList(),
-                    onChange: this.onChange.bind(this)
+                    onChange: this.onChange.bind(this),
+                    maxPhoneLength: maxPhoneLength
                 })
             )
         );
