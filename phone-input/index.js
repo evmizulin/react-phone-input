@@ -81,6 +81,7 @@ var PhoneInput = (function (_Component) {
                 mask: _tcomb.Str
             })),
             defaultCountry: _tcomb.Str,
+            maxPhoneLength: _tcomb.maybe(_tcomb.Num),
             onChange: _tcomb.Func
         }),
         enumerable: true
