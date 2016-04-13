@@ -169,6 +169,7 @@ var ReactPhoneInput = (function (_React$Component) {
         this.handleKeydown = this.handleKeydown.bind(this);
         this.handleInputKeyDown = this.handleInputKeyDown.bind(this);
         this.getCountryDropDownList = this.getCountryDropDownList.bind(this);
+        this.maxPhoneLength = props.maxPhoneLength || 16;
 
         this.state = {
             preferredCountries: preferredCountries,
@@ -371,7 +372,7 @@ var ReactPhoneInput = (function (_React$Component) {
         var freezeSelection = this.state.freezeSelection;
 
         // Does not exceed 16 digit phone number limit
-        if (event.target.value.replace(/\D/g, '').length > 16) {
+        if (event.target.value.replace(/\D/g, '').length > this.maxPhoneLength) {
             return;
         }
 

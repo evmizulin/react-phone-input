@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { propTypes } from 'tcomb-react'
-import { Str, Func, struct, list, maybe } from 'tcomb'
+import { Str, Func, struct, list, maybe, Num } from 'tcomb'
 import APhoneInput from './PhoneInput'
 
 import './phone-input.styl'
@@ -17,6 +17,7 @@ export default class PhoneInput extends Component {
             mask: Str
         })),
         defaultCountry: Str,
+        maxPhoneLength: maybe(Num),
         onChange: Func
     })
 
