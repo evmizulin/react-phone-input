@@ -1,7 +1,7 @@
 .phone-input-container {
   position: relative;
   width: 100%;
-  font-size: 16px;
+  font-size: 20px;
   .flag {
     width: 16px;
     height: 11px;
@@ -723,7 +723,7 @@
     height: 40px;
     width: 100%;
     outline: 0;
-    font-size: 20px;
+    font-size: inherit;
     &:focus {
       border-color: #ffa834;
       border-left-color: #cacaca;
@@ -816,6 +816,7 @@
     overflow-y: scroll;
     border-radius: 0 0 3px 3px;
     top: 39px;
+    font-size 16px
     .flag {
       display: inline-block;
     }
@@ -844,3 +845,23 @@
     }
   }
 }
+
+.phone-input-container
+
+  .form-control-label
+    position absolute
+    top 0
+    left 46px
+    height 40px
+    line-height 40px
+    color #666
+    transition .2s ease-in-out
+
+    &-content
+      background #fff
+
+  .form-control:focus + .form-control-label
+  .form-control:valid + .form-control-label
+  .form-control:disabled + .form-control-label
+    top -21px
+    font-size 11px

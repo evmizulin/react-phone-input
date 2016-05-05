@@ -170,6 +170,7 @@ var ReactPhoneInput = (function (_React$Component) {
         this.handleInputKeyDown = this.handleInputKeyDown.bind(this);
         this.getCountryDropDownList = this.getCountryDropDownList.bind(this);
         this.maxPhoneLength = props.maxPhoneLength || 16;
+        this.id = Math.round(Math.random() * 1e9);
 
         this.state = {
             preferredCountries: preferredCountries,
@@ -329,8 +330,10 @@ var ReactPhoneInput = (function (_React$Component) {
     };
 
     ReactPhoneInput.prototype.handleInputFocus = function handleInputFocus() {
+        var placeholder = this.props.placeholder;
+
         // if the input is blank, insert dial code of the selected country
-        if (_reactDom2['default'].findDOMNode(this.refs.numberInput).value === '+') {
+        if (placeholder && _reactDom2['default'].findDOMNode(this.refs.numberInput).value === '' || !placeholder && _reactDom2['default'].findDOMNode(this.refs.numberInput).value === '+') {
             this.setState({ formattedNumber: '+' + this.state.selectedCountry.dialCode });
         }
     };
@@ -532,6 +535,8 @@ var ReactPhoneInput = (function (_React$Component) {
     ReactPhoneInput.prototype.render = function render() {
         var _this4 = this;
 
+        var placeholder = this.props.placeholder;
+
         var arrowClasses = _classnames2['default']({
             'arrow': true,
             'up': this.state.showDropDown
@@ -556,11 +561,22 @@ var ReactPhoneInput = (function (_React$Component) {
                 onClick: this.handleInputClick,
                 onFocus: this.handleInputFocus,
                 onKeyDown: this.handleInputKeyDown,
-                value: this.state.formattedNumber,
+                value: this.state.formattedNumber === '+' && placeholder ? '' : this.state.formattedNumber,
                 ref: 'numberInput',
                 type: 'tel',
                 className: inputClasses,
-                placeholder: '+1 (702) 123-4567' }),
+                required: 'required',
+                id: this.id
+            }),
+            !placeholder ? null : _react2['default'].createElement(
+                'label',
+                { className: 'form-control-label', htmlFor: this.id },
+                _react2['default'].createElement(
+                    'span',
+                    { className: 'form-control-label-content' },
+                    placeholder
+                )
+            ),
             _react2['default'].createElement(
                 'div',
                 { ref: 'flagDropDownButton', className: flagViewClasses, onKeyDown: this.handleKeydown },

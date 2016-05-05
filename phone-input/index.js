@@ -53,6 +53,7 @@ var PhoneInput = (function (_Component) {
         var defaultCountry = _props.defaultCountry;
         var className = _props.className;
         var maxPhoneLength = _props.maxPhoneLength;
+        var placeholder = _props.placeholder;
 
         return _react2['default'].createElement(
             'div',
@@ -65,7 +66,8 @@ var PhoneInput = (function (_Component) {
                     value: value,
                     countries: this.getCountriesList(),
                     onChange: this.onChange.bind(this),
-                    maxPhoneLength: maxPhoneLength
+                    maxPhoneLength: maxPhoneLength,
+                    placeholder: placeholder
                 })
             )
         );
@@ -84,7 +86,8 @@ var PhoneInput = (function (_Component) {
             })),
             defaultCountry: _tcomb.Str,
             maxPhoneLength: _tcomb.maybe(_tcomb.Num),
-            onChange: _tcomb.Func
+            onChange: _tcomb.Func,
+            placeholder: _tcomb.maybe(_tcomb.Str)
         }),
         enumerable: true
     }]);
