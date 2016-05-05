@@ -136,6 +136,7 @@ class ReactPhoneInput extends React.Component {
         this.handleInputKeyDown = this.handleInputKeyDown.bind(this)
         this.getCountryDropDownList = this.getCountryDropDownList.bind(this)
         this.maxPhoneLength = props.maxPhoneLength || 16
+        this.id = Math.round(Math.random() * 1e9)
 
         this.state = {
             preferredCountries: preferredCountries,
@@ -286,8 +287,12 @@ class ReactPhoneInput extends React.Component {
     }
 
     handleInputFocus() {
+        const { placeholder } = this.props
         // if the input is blank, insert dial code of the selected country
-        if (ReactDOM.findDOMNode(this.refs.numberInput).value === '+') {
+        if (
+            placeholder && ReactDOM.findDOMNode(this.refs.numberInput).value === '' ||
+            !placeholder && ReactDOM.findDOMNode(this.refs.numberInput).value === '+'
+        ) {
             this.setState({formattedNumber: '+' + this.state.selectedCountry.dialCode})
         }
     }
@@ -480,6 +485,8 @@ class ReactPhoneInput extends React.Component {
     }
 
     render() {
+        const { placeholder } = this.props
+
         const arrowClasses = classNames({
             'arrow': true,
             'up': this.state.showDropDown
@@ -503,11 +510,21 @@ class ReactPhoneInput extends React.Component {
                     onClick={this.handleInputClick}
                     onFocus={this.handleInputFocus}
                     onKeyDown={this.handleInputKeyDown}
-                    value={this.state.formattedNumber}
+                    value={this.state.formattedNumber === '+' && placeholder ? '' : this.state.formattedNumber}
                     ref="numberInput"
                     type="tel"
                     className={inputClasses}
-                    placeholder="+1 (702) 123-4567"/>
+                    required="required"
+                    id={this.id}
+                />
+                {
+                    !placeholder ? null :
+                        <label className={'form-control-label'} htmlFor={this.id}>
+                            <span className={'form-control-label-content'}>
+                                {placeholder}
+                            </span>
+                        </label>
+                }
                 <div ref="flagDropDownButton" className={flagViewClasses} onKeyDown={this.handleKeydown} >
                     <div ref="selectedFlag" onClick={this.handleFlagDropdownClick} className="selected-flag" title={`${this.state.selectedCountry.name}: + ${this.state.selectedCountry.dialCode}`}>
                         <div className={inputFlagClasses}>

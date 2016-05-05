@@ -24,6 +24,7 @@ export default class App extends Component {
                     defaultCountry={'ru'}
                     countries={countries}
                     onChange={::this.onChange}
+                    placeholder={'Введите номер телефона'}
                     />
             </div>
         )
